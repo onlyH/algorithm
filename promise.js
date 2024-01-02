@@ -1,4 +1,68 @@
 // 根据promiseA+实现一个自己的promise
+class MyPromise {
+  constructor(executor) {
+    this.state = "pending";
+    this.value = undefined;
+    this.onFulfilledCallbacks = [];
+    this.onRejectedCallbacks = [];
+
+    const resolve = (value) => {
+      if (this.state === "pending") {
+        this.state = "fulfilled";
+        this.value = value;
+        this.onFulfilledCallbacks.forEach((callback) => callback(value));
+      }
+    };
+
+    const reject = (reason) => {
+      if (this.state === "pending") {
+        this.state = "rejected";
+        this.value = reason;
+        this.onRejectedCallbacks.forEach((callback) => callback(reason));
+      }
+    };
+
+    try {
+      executor(resolve, reject);
+    } catch (error) {
+      reject(error);
+    }
+  }
+
+  then(onFulfilled, onRejected) {
+    return new MyPromise((resolve, reject) => {
+      if (this.state === "fulfilled") {
+        const result = onFulfilled(this.value);
+        resolve(result);
+      } else if (this.state === "rejected") {
+        const result = onRejected(this.value);
+        resolve(result);
+      } else if (this.state === "pending") {
+        this.onFulfilledCallbacks.push((value) => {
+          const result = onFulfilled(value);
+          resolve(result);
+        });
+
+        this.onRejectedCallbacks.push((reason) => {
+          const result = onRejected(reason);
+          resolve(result);
+        });
+      }
+    });
+  }
+}
+
+// 示例用法
+const promise = new MyPromise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Hello, Promise!");
+  }, 1000);
+});
+
+promise.then(
+  (result) => console.log(result),
+  (error) => console.error(error)
+);
 
 /************************************************************ */
 
