@@ -17,7 +17,7 @@ function bubbleSort(arr) {
   return arr;
 }
 
-/***************************************************************************************** */
+/**************************分割线*************************************/
 
 /**
  * TODO 选择排序
@@ -26,31 +26,49 @@ function bubbleSort(arr) {
  *  以此类推，执行n-1轮
  * */
 
-/***************************************************************************************** */
+/**************************分割线*************************************/
 
 /**
  * 二分查找
  * 通过比较目标值与数组中间元素的大小关系，缩小查找范围，直到找到目标值或查找范围为空。
  */
 function binarySearch(arr, target) {
-  let left = 0;
-  let right = arr.length - 1;
-  while (left <= right) {
-    // 计算中间索引
-    let mid = Math.floor((left + right) / 2);
-    // 如果中间元素等于目标值，返回中间索引
-    if (arr[mid] === target) return mid;
-    // 如果中间元素大于目标值，在左半部分继续查找
-    if (arr[mid] > target) {
-      right = mid - 1;
+  if (arr.length === 0) return -1
+  let startIndex = 0; // 开始位置
+  let endIndex = arr.length - 1; // 结束位置
+  while (startIndex <= endIndex) {
+    const midIndex = Math.floor((startIndex + endIndex) / 2)
+    const midValue = arr[midIndex]
+    if (target < midValue) {
+      endIndex = midIndex - 1
+    } else if (target > midValue) {
+      startIndex = midIndex + 1
     } else {
-      // 如果中间元素小于目标值，在右半部分继续查找
-      left = mid + 1;
+      return midIndex
     }
+  }
+  return -1
+}
+
+function binarySearch2(arr, target, startIndex, endIndex) {
+  if (arr.length === 0) return -1
+  if (startIndex == null) startIndex = 0
+  if (endIndex == null) endIndex = arr.length - 1
+  // 如果start和end相遇则结束
+  if (startIndex === endIndex) return -1
+  // 中间位置
+  const midIndex = Math.floor((startIndex + endIndex) / 2)
+  const midValue = arr[midIndex]
+  if (target < midValue) {
+    return binarySearch2(arr, target, startIndex, midIndex - 1)
+  } else if (target > midValue) {
+    return binarySearch2(arr, target, midIndex + 1, endIndex)
+  } else {
+    return midIndex
   }
 }
 
-/***************************************************************************************** */
+/**************************分割线*************************************/
 
 /**
  *
@@ -75,7 +93,7 @@ function quickSort(arr) {
   return [...quickSort(left), nums, ...quickSort(right)];
 }
 
-/***************************************************************************************** */
+/**************************分割线*************************************/
 
 // 深拷贝
 function deepCLone(obj) {
@@ -89,7 +107,7 @@ function deepCLone(obj) {
   return result;
 }
 
-/***************************************************************************** */
+/**************************分割线*************************************/
 // 70. 爬楼梯
 // https://leetcode.cn/problems/climbing-stairs/submissions/381228150/
 

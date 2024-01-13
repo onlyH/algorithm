@@ -64,7 +64,7 @@ promise.then(
   (error) => console.error(error)
 );
 
-/************************************************************ */
+/**************************分割线*************************************/
 
 // 根据promiseA+实现一个自己的promise.all
 // 实现一个类似 Promise.all 的函数 myPromiseAll
@@ -124,5 +124,5 @@ myPromiseAll([promise1, promise2, promise3])
     console.error("One or more promises rejected:", error);
   });
 
-/************************************************ */
+/**************************分割线*************************************/
 // 根据promiseA+实现一个自己的promise.race

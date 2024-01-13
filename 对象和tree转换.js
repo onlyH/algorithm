@@ -43,7 +43,7 @@ const flatData = [
 const treeData = convertToTree(flatData);
 console.log(JSON.stringify(treeData, null, 2));
 
-/***************************************************************************************** */
+/**************************分割线*************************************/
 
 /**
  * 将树形结构数组扁平化为一维数组
@@ -86,7 +86,7 @@ const treeData1 = [
 const flattenedData = flattenTree(treeData1);
 console.log(JSON.stringify(flattenedData1, null, 2));
 
-/****************************************************************** */
+/**************************分割线*************************************/
 // 深度对比两个对象是否相等
 function deepEqual(obj1, obj2) {
   // 判断类型
