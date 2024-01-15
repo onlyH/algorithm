@@ -21,7 +21,7 @@ const arrProto = Object.create(oldArrayProperty);
 // 重新定义属性，监听起来
 function defineReactive(target, key, value) {
   // 深度监听
-  observe(newValue);
+  observe(value);
   // 核心 API
   Object.defineProperty(target, key, {
     get() {

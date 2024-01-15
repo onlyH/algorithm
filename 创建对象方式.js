@@ -105,6 +105,7 @@ class Queue {
   }
 
   dequeue() {
+    console.log('Dequeueing item:', this.items[0])
     return this.items.shift();
   }
 

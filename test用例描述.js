@@ -6,3 +6,11 @@ describe("数组旋转", () => {
     expect(rotateArray(arr, k)).toEqual(res);
   });
 });
+
+describe('sssss',()=> {
+  if('xxx',()=> {
+    const arr = [1,2,3,4]
+    const res= [4,3,2,1]
+    expect(rotate(arr,k)).toEqual(res)
+  });
+})

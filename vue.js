@@ -1,8 +1,6 @@
-import { render } from "node-sass";
-
 // 定义对象的属性。
 function def(obj, key, val, enumerable) {
-  Object.defineProperty(obk, key, {
+  Object.defineProperty(obj, key, {
     value: val,
     enumerable: !!enumerable,
     writable: true,
@@ -33,8 +31,8 @@ console.log(target); // { a: 1, b: 2 }
 
 const arrayLikeObject = { 0: "a", 1: "b", 2: "c", length: 3 };
 const newArray1 = Array.from(arrayLikeObject); // ['a', 'b', 'c']
-const newArray2 = Array.prototype.slice.call(arrayLikeObject); // ['a', 'b', 'c']
 const newArray3 = [...arrayLikeObject]; // ['a', 'b', 'c']
+const newArray2 = Array.prototype.slice.call(arrayLikeObject); // ['a', 'b', 'c']
 const newArray4 = Array.prototype.concat.call([], arrayLikeObject);
 
 /**************************分割线*************************************/
