@@ -81,6 +81,20 @@ var animalPrototype = Object.getPrototypeOf(cat);
 console.log(animalPrototype === Animal.prototype);
 
 /**************************分割线*************************************/
+// instanceof
+function myInstanceof(left,right) {
+  // 获取对象原型
+  let proto = Object.getPrototypeOf(left)
+  // 获取类型原型
+  let prototype = right.prototype
+  while(true) {
+    // 判断对象的原型是否在类型的原型上，直到 null
+    if(proto == null) return false
+    if(proto === prototype) return true
+    proto = Object.getPrototypeOf(proto)
+  }
+}
+/**************************分割线*************************************/
 
 // 使用队列处理异步任务的例子
 
@@ -132,3 +146,10 @@ async function processAsyncQueue() {
 
 // 执行异步队列
 processAsyncQueue();
+
+// 空对象
+let obj = {}
+
+JSON.stringify(obj === '{}')
+
+Object.keys(obj).length

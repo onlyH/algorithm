@@ -1,3 +1,10 @@
+//  TODO：标记代码中需要实现的功能或任务。
+//  FIXME：标记代码中需要修复的问题或缺陷。
+//  NOTE：提供额外的注释或提示信息，帮助理解代码意图或设计决策。
+//  BUG：标记已知的Bug或错误。
+//  XXX：标记需要警惕或需要重点关注的代码块。
+//  HACK：标记临时性修复或不优雅的解决方案。
+
 var arr = [1, 2, 3, 4, 5, 6, 1, 2, 3];
 
 /* 1，数组去重 */
@@ -14,16 +21,16 @@ let arr3 = arr.reduce((pre, cur) => {
   return pre;
 }, []);
 
-// Map 相同的键只会出现一次
+// TODO  Map 相同的键只会出现一次 import
 var arr4 = Array.from(new Map(arr.map((item) => [item, item])).values());
 
 // for循环
 function unique(arr) {
   let res = [];
   arr?.length &&
-    arr.forEach((item) => {
-      if (!res.includes(item)) res.push(item);
-    });
+  arr.forEach((item) => {
+    if (!res.includes(item)) res.push(item);
+  });
   return res;
 }
 
@@ -95,6 +102,7 @@ function myNew(fn, ...args) {
   // 步骤4：如果构造函数返回一个对象，则返回该对象；否则，返回新对象
   return result instanceof Object ? result : obj;
 }
+
 // 示例使用
 function Person(name, age) {
   this.name = name;
@@ -123,6 +131,7 @@ function shuffleArray(array) {
   }
   return array;
 }
+
 // 示例使用
 let myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let shuffledArray = shuffleArray(myArray);
@@ -138,6 +147,7 @@ function findKthLargest(nums, k) {
   nums.sort((a, b) => b - a);
   return nums[k - 1];
 }
+
 // 示例使用
 let array = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
 let k = 4;
