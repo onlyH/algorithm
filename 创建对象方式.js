@@ -153,3 +153,15 @@ let obj = {}
 JSON.stringify(obj === '{}')
 
 Object.keys(obj).length
+
+// offsetTop< innerHeight + scrollTop
+function lazyLoad() {
+  let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+  let innerHeight = window.innerHeight
+  for(let i = 0 ; i<imgs.length;i++) {
+    if(imgs[i].offsetTop < innerHeight + scrollTop) {
+      imgs[i].src= imgs[i].getAttribute('data-src')
+    }
+  }
+}
+window.onscroll(lazyLoad())
