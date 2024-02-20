@@ -20,11 +20,28 @@ function bubbleSort(arr) {
 /**************************分割线*************************************/
 
 /**
- * TODO 选择排序
+ * 选择排序
  * 找到数组中的最小值，选中它并将其放置在第一位
  * 接着找到第二小的值，选中它并将它放置在第二位
  *  以此类推，执行n-1轮
  * */
+function selectionSort(arr) {//   遍历数组元素
+  for(let i = 0; i <arr.length;i++) {
+    let minIndex = i;
+    for(let j = i+1; j<arr.length;j++) {
+      if(arr[j] <arr[minIndex]) {
+        minIndex = j
+      }
+    }
+  //   将最小值交换到当前位置
+    if(minIndex !== i) {
+      [arr[i],arr[minIndex]] = [arr[minIndex],arr[i]]
+    }
+  }
+  return arr
+}
+const arr1 = [64, 25, 12, 22, 11];
+console.log("After sorting:", selectionSort(arr1));
 
 /**************************分割线*************************************/
 
